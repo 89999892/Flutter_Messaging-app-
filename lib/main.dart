@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'data/datasources/supabase/supabase_client_provider.dart';
 import 'injection_container.dart';
 import 'features/authentication/bloc/auth_bloc.dart';
 import 'features/authentication/bloc/auth_state.dart';
@@ -17,6 +18,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Initialize Supabase
+  await SupabaseClientProvider.initialize();
 
   // Initialize dependency injection
   await initializeDependencies();
